@@ -1,3 +1,5 @@
+export const runtime = 'nodejs'; // 👈 Fix: Avoid Edge function incompatibility with Prisma
+
 import { NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
 
@@ -10,7 +12,6 @@ export async function POST(req: Request) {
     if (typeof error === 'object' && error !== null && 'code' in error) {
       const prismaError = error as { code: string };
       if (prismaError.code === 'P2002') {
-        // Prisma unique constraint failed on email
         return NextResponse.json({ error: 'Email already exists' }, { status: 409 });
       }
     }
