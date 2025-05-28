@@ -1,102 +1,92 @@
-import Image from "next/image";
+'use client';
 
-export default function Home() {
+import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
+import { useRouter } from "next/navigation";
+
+export default function HomePage() {
+  const router = useRouter();
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    // Main container with dark background
+    <div className="flex flex-col min-h-screen bg-black text-white font-sans overflow-hidden">
+      {/* Header with logo (subtler on dark background) */}
+      <header className="w-full py-4 px-6 flex items-center justify-start relative z-10">
+        {/* Adjusted image for better visibility on dark background, potentially a white logo version */}
+       
+      </header>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+      {/*
+        Main Content Section:
+        Designed to mimic the central, focused layout of the Next.js page.
+        Uses flexbox to center content vertically and horizontally.
+        The "grid" background is achieved with pseudo-elements or a background image,
+        but for simplicity here, we'll focus on the core layout.
+      */}
+      <main className="flex-grow flex flex-col items-center justify-center px-6 py-12 relative z-0">
+        {/*
+          This div acts as the container for the text and buttons,
+          limiting their width similar to the Next.js example.
+        */}
+        <div className="max-w-4xl text-center space-y-8 lg:space-y-10 relative z-10">
+          {/* Main Heading */}
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabrabold tracking-tighter leading-tight select-none">
+            Welcome to the <br className="md:hidden" />
+            <span className="bg-gradient-to-r from-gray-300 via-white to-gray-400 text-transparent bg-clip-text">
+              Multiverse Enterprise Plc
+            </span>
+          </h1>
+
+          {/* Introductory Paragraph */}
+       <p className="max-w-2xl mx-auto text-lg md:text-xl text-gray-400">
+  Trusted by international partners, Multiverse Enterprise Plc connects markets through
+  <span className="font-semibold text-white ml-1">reliable import and export services</span>
+  focused on quality, efficiency, and global reach.
+</p>
+
+
+          {/* Buttons container, mimicking the Next.js button group */}
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-4 pt-4">
+            <Button
+              onClick={() => router.push("/register")}
+              className="px-8 py-3 sm:px-10 sm:py-4 rounded-lg font-semibold text-lg
+                         bg-white text-black hover:bg-gray-200 transition-colors duration-200
+                         shadow-lg flex items-center justify-center focus-visible:ring-2 focus-visible:ring-white"
+              aria-label="Register to join Multiverse Enterprise Plc"
+            >
+              Get Started
+              <ArrowRight className="ml-3 h-5 w-5" />
+            </Button>
+
+            <Button
+              variant="outline" // Assuming shadcn/ui outline variant styling will be adjusted
+              onClick={() => router.push("/")}
+              className="px-8 py-3 sm:px-10 sm:py-4 rounded-lg font-semibold text-lg
+                         bg-gray-800 text-gray-200 border border-gray-700 hover:bg-gray-700 hover:border-gray-600
+                         transition-colors duration-200 shadow-md focus-visible:ring-2 focus-visible:ring-gray-400"
+              aria-label="Learn more about Multiverse Enterprise Plc"
+            >
+              Learn More
+            </Button>
+          </div>
         </div>
+
+        {/* This could be for the 'npm create-next-app@latest' type of text */}
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 text-gray-500 text-sm font-mono mt-8 hidden sm:block">
+         Secure & Reliable Registration System
+        </div>
+
+        {/* Background Grid - a simple way to simulate, for a true grid, use SVG or a more complex CSS approach */}
+        <div className="absolute inset-0 z-0 opacity-10" style={{
+          backgroundImage: 'linear-gradient(to right, #333 1px, transparent 1px), linear-gradient(to bottom, #333 1px, transparent 1px)',
+          backgroundSize: '40px 40px',
+          maskImage: 'radial-gradient(ellipse at center, black 0%, transparent 70%)'
+        }}></div>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+
+      {/* Footer (subtler on dark background) */}
+      <footer className="w-full border-t border-gray-800 py-4 px-6 text-center text-sm text-gray-600 bg-black relative z-10">
+        © {new Date().getFullYear()} Multiverse Enterprise Plc. All rights reserved.
       </footer>
     </div>
   );
