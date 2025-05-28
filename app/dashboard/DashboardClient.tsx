@@ -19,7 +19,7 @@ import {
   ChartContainer, ChartTooltip, ChartTooltipContent,
 } from '@/components/ui/chart';
 import {
-  Line, LineChart, CartesianGrid, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer,
+  Line, LineChart, CartesianGrid, XAxis, YAxis, Legend, ResponsiveContainer,
 } from 'recharts';
 import { Separator } from '@/components/ui/separator';
 import {
