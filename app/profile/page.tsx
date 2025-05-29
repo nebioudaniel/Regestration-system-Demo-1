@@ -23,7 +23,7 @@ export default async function ProfilePage() {
 
         {/* Main Thank You Heading */}
         <h1 className="text-4xl md:text-5xl font-extrabold text-white leading-tight mb-6">
-          Thank You for regester !! <span className="capitalize">{userName}</span>!
+          Thank You for regester !!
         </h1>
 
         {/* Optional Descriptive Paragraph (removed for simplicity if not needed) */}
